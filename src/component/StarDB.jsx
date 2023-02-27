@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import RadioSide from "./assets/radioSide";
-import people from "./people/People";
 import People from "./people/People";
 import Planets from "./planets/Planets";
 import Starship from "./starships/Starship";
@@ -16,7 +15,6 @@ const StarDB = () => {
     const [currentPeople, setCurrentPeople] = useState("");
     const [currentPlanet, setCurrentPlanet] = useState("");
     const [currentStarship, setCurrentStarship] = useState("");
-    const [errorInfo, setErrorInfo] = useState("");
 
     const requestOptions = {
         method: 'GET',
@@ -33,20 +31,20 @@ const StarDB = () => {
             fetch(`https://swapi.dev/api/${link}/`, requestOptions)
                 .then(response => response.json())
                 .then(result => setPeople(result.results))
-                .then(result => setIsLoading(false))
-                .catch(error => setIsLoading(false));
+                .then(() => setIsLoading(false))
+                .catch(() => setIsLoading(false));
         } else if (link === "planets") {
             fetch(`https://swapi.dev/api/${link}/`, requestOptions)
                 .then(response => response.json())
                 .then(result => setPlanets(result.results))
-                .then(result => setIsLoading(false))
-                .catch(error => setIsLoading(false));
+                .then(() => setIsLoading(false))
+                .catch(() => setIsLoading(false));
         } else if (link === "starships") {
             fetch(`https://swapi.dev/api/${link}/`, requestOptions)
                 .then(response => response.json())
                 .then(result => setStarships(result.results))
-                .then(result => setIsLoading(false))
-                .catch(error => setErrorInfo(error));
+                .then(() => setIsLoading(false))
+                .catch(() => setIsLoading(false));
         }
     }, [link]);
 
