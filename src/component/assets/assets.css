@@ -41,7 +41,7 @@
 }
 
 .selector-item_label::before{
-    width: 0%;
+    width: 0;
     height: 100%;
 }
 
@@ -53,4 +53,16 @@
 }
 .selector-item input:checked + .selector-item_label::before{
     width: 110%;
+}
+.darkBody .selector-item_label:hover{
+    background-color: yellow;
+    color:#333333;
+}
+.darkBody .selector-item input:checked + .selector-item_label{
+    color:yellow !important;
+    background-color:#333333;
+}
+.darkBody .selector-item_label::before{
+    background: white;
+    color:#333333;
 }

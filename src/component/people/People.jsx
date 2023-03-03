@@ -2,7 +2,9 @@ import React from "react";
 import {v4 as uuidv4} from 'uuid';
 import CurrentPeople from "./currentPeople";
 
+
 import "./People.css"
+
 
 
 const People = (props) => {
@@ -14,7 +16,7 @@ const People = (props) => {
                 {props.People.map(item => {
                     return (
                         <button key={uuidv4()}
-                                onClick={(e) => props.setCurrentPeople(item.name)}>{item.name}</button>
+                                onClick={() => props.setCurrentPeople(item.name)}>{item.name}</button>
                     )
                 })}
             </div>

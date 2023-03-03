@@ -4,6 +4,7 @@ import CurrentPlanet from "./currentPlanet";
 
 import "./Planets.css"
 
+
 const Planets = (props) => {
 
     return (
@@ -13,7 +14,7 @@ const Planets = (props) => {
                 {props.Planets.map(item => {
                     return (
                         <button key={uuidv4()}
-                                onClick={(e) => props.setCurrentPlanet(item.name)}>{item.name}</button>
+                                onClick={() => props.setCurrentPlanet(item.name)}>{item.name}</button>
                     )
                 })}
             </div>

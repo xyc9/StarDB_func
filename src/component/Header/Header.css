@@ -1,0 +1,118 @@
+header{
+    padding: 10px 0;
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: .3s;
+    min-height: 100px;
+}
+
+header img{
+    width: 100px;
+}
+.right-side__header{
+    display: flex;
+    align-items: center;
+}
+
+.theme__toggle{
+    color:white;
+    padding-right: 20px;
+}
+.theme__cheker{
+    display: none;
+}
+
+.toggle{
+    border: 2px solid white;
+    padding: 5px;
+    font-size: 10px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    cursor: pointer;
+}
+.toggle svg{
+    width: 15px;
+    transition: .3s;
+    z-index: 9999;
+}
+.toggle svg.moon{
+    fill:black;
+}
+.toggle svg.sun{
+    fill:white;
+}
+.toggle svg:first-child{
+    margin-right: 25px;
+}
+
+.toggle__icon{
+    width: 30px;
+    transition: .3s;
+}
+.toggle-dot{
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    left: 2px;
+    border-radius: 50%;
+    display: block;
+    background-color: #fff;
+    transition: .3s;
+}
+.theme__cheker:checked + .toggle .toggle-dot {
+    transform: translateX(37px);
+}
+
+header.darkTheme{
+    background-color: white;
+
+}
+
+header.darkTheme .toggle{
+    border: 2px solid black;
+}
+header.darkTheme .toggle-dot{
+    background-color: black;
+}
+.toggle__lang button{
+    padding: 5px 15px;
+    background-color: yellow;
+    border-radius: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: .3s;
+    opacity: .5;
+    border: none;
+}
+.toggle__lang button:hover{
+    background-color: orange;
+    color:white;
+    opacity: 1;
+}
+.toggle__lang button:first-child{
+    margin-right: 10px;
+}
+.toggle__lang .active{
+    opacity: 1;
+}
+.toggle__lang .active:hover{
+
+   background-color: yellow;
+    color: #333333;
+}
+header.darkTheme .toggle__lang button{
+    background-color: #333;
+    color:white;
+}
+header.darkTheme .toggle__lang .active:hover{
+    background-color: #333;
+    color: white;
+}
+header.darkTheme .toggle__lang  .active{
+    color: yellow;
+}
