@@ -9,7 +9,7 @@
 .selector-item input{
     display: none;
 }
-.selector-item_label{
+.link__btn{
     cursor: pointer;
     position: relative;
     display: block;
@@ -25,10 +25,10 @@
     transition: 1s all ease;
 }
 
-.selector-item_label:hover{
+.link__btn:hover{
     color:white;
 }
-.selector-item_label::before{
+.link__btn::before{
     background: #333;
     color:white;
     content: "";
@@ -40,12 +40,12 @@
     transition: all 0.6s ease;
 }
 
-.selector-item_label::before{
+.link__btn::before{
     width: 0;
     height: 100%;
 }
 
-.selector-item_label:hover::before{
+.link__btn:hover::before{
     width: 110%;
 }
 .selector-item input:checked + .selector-item_label{
@@ -54,7 +54,7 @@
 .selector-item input:checked + .selector-item_label::before{
     width: 110%;
 }
-.darkBody .selector-item_label:hover{
+.darkBody .link__btn:hover{
     background-color: yellow;
     color:#333333;
 }
@@ -62,7 +62,7 @@
     color:yellow !important;
     background-color:#333333;
 }
-.darkBody .selector-item_label::before{
+.darkBody .link__btn::before{
     background: white;
     color:#333333;
 }

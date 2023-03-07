@@ -1,0 +1,50 @@
+.auth__side button{
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    color:white;
+    border-color: inherit;
+    transition: .2s;
+
+}
+.auth__side{
+    width: 30%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+.auth__side button{
+    cursor: pointer;
+    position: relative;
+    display: block;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 30px 10px;
+    border: 2px solid #333;
+    color:#333;
+    padding: 14px 60px;
+    text-transform: uppercase;
+    overflow: hidden;
+    border-radius: 5px;
+
+    transition: 1s all ease;
+}
+
+.auth__side button:hover{
+    color:white;
+    background: #333;
+}
+.auth__side button::before{
+    background: #333;
+    color:white;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+    transition: all 0.2s ease;
+}
+.auth__side button.active{
+    background-color: green;
+}

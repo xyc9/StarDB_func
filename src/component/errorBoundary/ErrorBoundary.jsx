@@ -1,6 +1,5 @@
 import React, {Component} from "react";
-import StarDB from "../StarDB";
-import Header from "../Header/Header";
+import MyRootPage from "../Root/MyRootPage";
 
 class ErrorBoundary extends Component {
     state = {
@@ -9,12 +8,10 @@ class ErrorBoundary extends Component {
     }
 
     componentDidCatch(error, errorInfo) {
-        // Catch errors in any components below and re-render with error message
         this.setState({
             hasError: error,
             errorInfo: errorInfo
         })
-        // You can also log error messages to an error reporting service here
     }
 
     render() {
@@ -27,8 +24,7 @@ class ErrorBoundary extends Component {
             );
         }
         return <div>
-            <Header/>
-            <StarDB/>
+          <MyRootPage/>
         </div>
     }
 }

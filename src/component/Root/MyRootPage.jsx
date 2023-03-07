@@ -1,18 +1,22 @@
 import React, {useContext, useEffect, useState} from "react";
-import RadioSide from "./assets/radioSide";
-import People from "./people/People";
-import Planets from "./planets/Planets";
-import Starship from "./starships/Starship";
+import RadioSide from "../assets/radioSide";
+import People from "../people/People";
+import Planets from "../planets/Planets";
+import Starship from "../starships/Starship";
 import {ClipLoader} from "react-spinners";
-import {ThemeContext} from "../App";
+import {AuthContext, ThemeContext} from "../../App";
+import {Route, Routes} from "react-router-dom";
+import Home from "../Home/Home";
+import Login from "../Login/Login";
+import ErrrorPage from "../errorRedirect/ErrrorPage";
 
 
-const StarDB = () => {
+const MyRootPage = () => {
     const [apiData, setApiData] = useState([]);
     const [link, setLink] = useState("people");
     const [isLoading, setIsLoading] = useState(false);
     const [currentItem, setCurrentItem] = useState("");
-    const {currentTheme } = useContext(ThemeContext)
+    const {currentTheme} = useContext(ThemeContext)
 
 
     useEffect(() => {
@@ -28,30 +32,30 @@ const StarDB = () => {
             .then(result => setApiData(result.results))
             .then(() => setIsLoading(false))
             .catch(() => setIsLoading(false));
-
     }, [link]);
 
     const handleCurrentItem = (name) => {
         const newCurrentPeople = apiData.filter((item) => item.name === name);
         setCurrentItem(newCurrentPeople[0])
     }
+    const {auth} = useContext(AuthContext)
     return (
         <div className={currentTheme ? "darkBody" : "lightBody"}>
             <div className="radio__side">
                 <h1>StarDB : </h1>
                 <RadioSide setLink={setLink}/>
             </div>
-            <div>
-                {link === "people" ? <People People={apiData} setCurrentPeople={handleCurrentItem}
-                                             currentPeople={currentItem}/> : null}
-                {link === "planets" ?
-                    <Planets Planets={apiData} setCurrentPlanet={handleCurrentItem}
-                             currentPlanet={currentItem}/> : null}
-                {link === "starships" ?
-                    <Starship Starships={apiData} setCurrentStarship={handleCurrentItem}
-                              currentStarship={currentItem}/> : null}
-
-            </div>
+            <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/login" element={<Login/>}/>
+                <Route path="/people" element={auth ? <People People={apiData} setCurrentPeople={handleCurrentItem}
+                                                       currentPeople={currentItem} />: <Home/>}/>
+                <Route path="/planets" element={auth ? <Planets Planets={apiData} setCurrentPlanet={handleCurrentItem}
+                                                         currentPlanet={currentItem}/> : <Home/>}/>
+                <Route path="/starships" element={auth ? <Starship Starships={apiData} setCurrentStarship={handleCurrentItem}
+                                                            currentStarship={currentItem}/> : <Home/>}/>
+                <Route path="*" element={<ErrrorPage/>}/>
+            </Routes>
             <div className="preloader">
                 {
                     isLoading ? <ClipLoader
@@ -61,8 +65,10 @@ const StarDB = () => {
                     /> : null
                 }
             </div>
+
+
         </div>
     )
 }
 
-export default StarDB;
+export default MyRootPage;
